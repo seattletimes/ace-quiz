@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <%= t.include("partials/_head.html") %>
+  </head>
+  <body>
+
+    <responsive-child class="outer">
+
+      <div class="quiz-container">
+        <div class="question"></div>
+        <div class="answers">
+          <div class="answer yes">yes</div>
+          <div class="answer no">no</div>
+        </div>
+        <div class="index"></div>
+      </div>
+
+      <div class="source">Source: Centers for Disease Control and Prevention</div>
+      <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
+    </responsive-child>
+
+    <script>
+      var quizData = <%= JSON.stringify(csv.ace) %>
+    </script>
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_foot.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>
